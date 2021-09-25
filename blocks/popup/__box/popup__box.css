@@ -1,0 +1,16 @@
+.popup__box {
+  width: 430px;
+  height: 330px;
+  background: #ffffff;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+}
+@media screen and (max-width: 410px) {
+  .popup__box {
+    max-width: 282px;
+    margin: 0 auto;
+  }
+}

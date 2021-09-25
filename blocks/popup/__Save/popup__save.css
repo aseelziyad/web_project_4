@@ -1,0 +1,24 @@
+.popup__save {
+  width: 358px;
+  min-height: 46px;
+  background-image: url("../../../images/icon-save.svg");
+  background: #000000;
+  border-radius: 2px;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 22px;
+  color: #ffffff;
+  text-align: center;
+  align-self: center;
+  cursor: pointer;
+  margin: 48px auto 36px auto;
+}
+.popup__save:hover {
+  opacity: 0.8;
+}
+@media screen and (max-width: 410px) {
+  .popup__save {
+    max-width: 238px;
+    margin: 46px auto 25px auto;
+  }
+}
