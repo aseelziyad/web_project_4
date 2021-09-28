@@ -1,5 +1,6 @@
 .photograph__container {
   display: flex;
   align-items: center;
-  margin: 25px 15px 25px 31px;
+  justify-content: space-around;
+  margin: 25px auto 25px auto;
 }

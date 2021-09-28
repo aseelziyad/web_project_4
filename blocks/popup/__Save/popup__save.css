@@ -4,6 +4,7 @@
   background-image: url("../../../images/icon-save.svg");
   background: #000000;
   border-radius: 2px;
+  border: none;
   font-size: 18px;
   font-weight: normal;
   line-height: 22px;
@@ -20,5 +21,7 @@
   .popup__save {
     max-width: 238px;
     margin: 46px auto 25px auto;
+    font-size: 14px;
+    line-height: 16.94px;
   }
 }
