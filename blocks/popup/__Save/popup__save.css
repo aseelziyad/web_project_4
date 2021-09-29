@@ -1,7 +1,7 @@
 .popup__save {
   width: 358px;
-  min-height: 46px;
-  background-image: url("../../../images/icon-save.svg");
+  height: 50px;
+  background-image: url("../../../images/Rectangle.svg");
   background: #000000;
   border-radius: 2px;
   border: none;
@@ -20,6 +20,7 @@
 @media screen and (max-width: 410px) {
   .popup__save {
     max-width: 238px;
+    height: 46px;
     margin: 46px auto 25px auto;
     font-size: 14px;
     line-height: 16.94px;
