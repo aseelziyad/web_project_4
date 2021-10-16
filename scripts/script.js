@@ -27,7 +27,7 @@ const initialCards = [
 
 //popup Edit//
 
-const popup = document.querySelector(".popup");
+const popups = document.querySelectorAll(".popup");
 
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -39,16 +39,15 @@ const formElement = document.querySelector(".popup__form");
 const nameInput = document.querySelector("#Name");
 const aboutInput = document.querySelector("#About");
 
-const allCloseButtons = document.querySelectorAll(".popup__close");
-
 // open popupfunc//
 function openPopup(popup) {
   popup.classList.add("popup_active");
   nameInput.value = profileTitle.textContent;
   aboutInput.value = profileSubtitle.textContent;
 }
+
 //close popupfunc//
-function closePopup() {
+function closePopup(popup) {
   popup.classList.remove("popup_active");
 }
 
@@ -57,14 +56,15 @@ function handleFormSubmit(evt) {
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = aboutInput.value;
 
-  closePopup();
+  closePopup(popupEditProfile);
 }
+
+const allCloseButtons = document.querySelectorAll(".popup__close");
+
 // close popups//
 allCloseButtons.forEach((btn) =>
   btn.addEventListener("click", () => {
-    const allThePopups = document.querySelectorAll(".popup");
-    allThePopups.forEach((popup) => popup.classList.remove("popup_active"));
-    closePopup(allThePopups);
+    popups.forEach((popup) => closePopup(popup));
   })
 );
 
