@@ -15,7 +15,8 @@
   margin: 48px auto 36px auto;
 }
 .popup__save:hover {
-  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 2px;
 }
 @media screen and (max-width: 410px) {
   .popup__save {

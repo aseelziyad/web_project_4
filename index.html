@@ -26,90 +26,35 @@
         <div class="profile__info">
           <div class="profile__info-container">
             <h1 class="profile__title">Jacques Cousteau</h1>
-            <button type="button" aria-label="Edit" class="profile__edit-button"></button>
+            <button
+              type="button"
+              aria-label="Edit"
+              class="profile__edit-button"
+            ></button>
           </div>
           <p class="profile__subtitle">Explorer</p>
         </div>
-        <button type="button" aria-label="Add" class="profile__add-button"></button>
+        <button
+          type="button"
+          aria-label="Add"
+          class="profile__add-button"
+        ></button>
       </section>
 
-      <section class="photographs">
-        <article class="photograph">
-          <img
-            src="images/photo-yosemite-valley.png"
-            alt="Yosemite valley"
-            class="photograph__post"
-          />
-          <div class="photograph__container">
-            <h2 class="photograph__title">Yosemite Valley</h2>
-            <button type="button" aria-label="Like" class="photograph__button"></button>
-          </div>
-        </article>
-        <article class="photograph">
-          <img
-            src="images/photo-lake-louise.png"
-            alt="lake louise"
-            class="photograph__post"
-          />
-          <div class="photograph__container">
-            <h2 class="photograph__title">Lake Louise</h2>
-            <button type="button" aria-label="Like" class="photograph__button"></button>
-          </div>
-        </article>
-        <article class="photograph">
-          <img
-            src="images/photo-bald-mountains.png"
-            alt="Bald mountains"
-            class="photograph__post"
-          />
-          <div class="photograph__container">
-            <h2 class="photograph__title">Bald Mountains</h2>
-            <button type="button" aria-label="Like" class="photograph__button"></button>
-          </div>
-        </article>
-        <article class="photograph">
-          <img
-            src="images/photo-latemar.png"
-            alt="latemar"
-            class="photograph__post"
-          />
-          <div class="photograph__container">
-            <h2 class="photograph__title">Latemar</h2>
-            <button type="button" aria-label="Like" class="photograph__button"></button>
-          </div>
-        </article>
-        <article class="photograph">
-          <img
-            src="images/photo-vanoise-national-park.png"
-            alt="Vanoise Nationa..."
-            class="photograph__post"
-          />
-          <div class="photograph__container">
-            <h2 class="photograph__title">Vanoise Nationa...</h2>
-            <button type="button" aria-label="Like" class="photograph__button"></button>
-          </div>
-        </article>
-        <article class="photograph">
-          <img
-            src="images/photo-lago-di-braies.png"
-            alt="Lago di Braies"
-            class="photograph__post"
-          />
-          <div class="photograph__container">
-            <h2 class="photograph__title">Lago di Braies</h2>
-            <button type="button" aria-label="Like" class="photograph__button"></button>
-          </div>
-        </article>
-      </section>
+      <section class="photographs"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&#169;2021 Around The U.S.</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_edit-profile">
       <div class="popup__box">
-        <button type="button" aria-label="Close popup" class="popup__close"></button>
+        <button
+          type="button"
+          aria-label="Close popup"
+          class="popup__close"
+        ></button>
         <h2 class="popup__title">Edit profile</h2>
-        <form class="popup__form" name="form">
+        <form class="popup__form" name="form_edit">
           <input
             type="text"
             class="popup__field"
@@ -125,10 +70,75 @@
             id="About"
             placeholder="About me"
           />
-          <button type="submit" aria-label="Submit" class="popup__save">Save</button>
+          <button type="submit" aria-label="Submit" class="popup__save">
+            Save
+          </button>
         </form>
       </div>
     </div>
-    <script src="scripts/script.js"></script>
+
+    <div class="popup popup_add-card">
+      <div class="popup__box">
+        <button
+          type="button"
+          aria-label="Close popup"
+          class="popup__close"
+        ></button>
+        <h2 class="popup__title">New Place</h2>
+        <form class="popup__form" name="form_add" id="form_add">
+          <input
+            type="text"
+            class="popup__field"
+            name="Title"
+            id="Title"
+            placeholder="Place Title"
+            required
+          />
+          <input
+            type="text"
+            class="popup__field"
+            name="ImageLink"
+            id="ImageLink"
+            placeholder="Image link"
+          />
+          <button type="submit" aria-label="Creat" class="popup__save">
+            Create
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_image">
+      <div class="popup__image">
+        <button
+          type="button"
+          aria-label="Close popup"
+          class="popup__close"
+        ></button>
+        <img src="#" class="popup__image-card" />
+        <h2 class="popup__image-title"></h2>
+      </div>
+    </div>
+
+    <template id="card-template">
+      <article class="photograph">
+        <button
+          type="button"
+          aria-label="delete"
+          class="photograph__delete-button"
+        ></button>
+        <img src= "#" class="photograph__post" />
+        <div class="photograph__container">
+          <h2 class="photograph__title"></h2>
+          <button
+            type="button"
+            aria-label="Like"
+            class="photograph__like-button"
+          ></button>
+        </div>
+      </article>
+    </template>
+
+    <script type="text/javascript" src="scripts/script.js"></script>
   </body>
 </html>

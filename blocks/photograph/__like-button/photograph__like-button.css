@@ -1,4 +1,4 @@
-.photograph__button {
+.photograph__like-button {
   width: 21px;
   height: 19px;
   color: #000000;
@@ -11,11 +11,7 @@
   margin: 0;
   border: none;
 }
-.photograph__button:hover {
+.photograph__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
-}
-.photograph__button:active {
-  background-image: url("../../../images/icon-like-clicked.svg");
-  opacity: 1;
 }

@@ -9,7 +9,7 @@ HTML and CSS structure is based on BEM methodology
 Flex box , grids and media queries properties to make the website responsive
 approach from Desktop to mobile resolutions 1280px-320px
 popup box
-javascript ; Functions,AddEventListeners, queryselectors
+javascript ; Functions, popups ,AddEventListeners, queryselectors, DOM manipulation
 
 https://aseelziyad.github.io/web_project_4/index.html
 

@@ -1,3 +1,7 @@
 .photograph__post {
-  width: 282px;
+  height: 282px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
