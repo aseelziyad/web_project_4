@@ -98,13 +98,13 @@ function createCard(cardData) {
 
   cardTitle.textContent = cardData.name;
   cardImage.src = cardData.link;
-  cardImage.alt = card.name;
+  cardImage.alt = cardData.name;
 
   //-------------------------popupImage-----------------//
   cardImage.addEventListener("click", () => {
     popupImage.querySelector(".popup__image-card").src = cardData.link;
     popupImage.querySelector(".popup__image-title").textContent = cardData.name;
-    popupImage.querySelector(".popup__image-title").alt = cardData.name;
+    popupImage.querySelector(".popup__image-card").alt = cardData.name;
 
     openPopup(popupImage);
   });
