@@ -33,17 +33,17 @@ export default class Card {
       .addEventListener("click", this._handleDeleteIcon);
     this._element
       .querySelector(".photograph__like-button")
-      .addEventListener("click", this._handleLikeButton);
+      .addEventListener("click", this._handleLikeIcon);
     this._element
       .querySelector(".photograph__post")
       .addEventListener("click", this._handleCardImage);
   }
+  _handleLikeIcon = (event) => {
+    event.target.classList.toggle("photograph__like-button_active");
+  };
 
   _handleDeleteIcon = (event) => {
     event.target.parentElement.remove();
-  };
-  _handleLikeIcon = (event) => {
-    event.target.classList.toggle("photograph__like-button_active");
   };
   _handleCardImage = () => {
     const popupImage = document.querySelector(".popup_image");
