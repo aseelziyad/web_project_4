@@ -1,5 +1,3 @@
-// import formValidator from "./formValidater.js";
-
 import Card from "./card.js";
 import FormValidator from "./FormValidater.js";
 import { openPopup, closePopup } from "./utils.js";

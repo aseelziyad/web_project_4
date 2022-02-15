@@ -49,6 +49,7 @@ export default class Card {
     const popupImage = document.querySelector(".popup_image");
     const popupImageTitle = popupImage.querySelector(".popup__image-title");
     const popupImageLink = popupImage.querySelector(".popup__image-card");
+
     popupImageTitle.textContent = this._name;
     popupImageLink.src = this._link;
     popupImageLink.alt = this._name;

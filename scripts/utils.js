@@ -1,6 +1,3 @@
-// import FormValidator from "./FormValidater.js";
-// import Card from "./card.js";
-
 const allThePopups = document.querySelectorAll(".popup");
 const allCloseButtons = document.querySelectorAll(".popup__close");
 
