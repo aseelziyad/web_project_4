@@ -1,6 +1,6 @@
-import Card from "./card.js";
-import FormValidator from "./FormValidater.js";
-import { openPopup, closePopup } from "./utils.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { openPopup, closePopup } from "./Utils.js";
 
 const initialCards = [
   {
@@ -28,6 +28,8 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
+const allThePopups = document.querySelectorAll(".popup");
+const allCloseButtons = document.querySelectorAll(".popup__close");
 
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const nameInput = document.querySelector("#input-name");
@@ -51,6 +53,14 @@ const settings = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visiable",
 };
+
+// !!close popupButtons-----------**//
+allCloseButtons.forEach((button) =>
+  button.addEventListener("click", () => {
+    allThePopups.forEach((popup) => closePopup(popup));
+  })
+);
+
 // !!-----form Validator
 const editFormValidator = new FormValidator(settings, editForm);
 editFormValidator.enableValidation();
@@ -61,12 +71,12 @@ addFormValidator.enableValidation();
 //!!-------- create cards
 const createCards = () => {
   initialCards.forEach((cardData) =>
-    cards.append(new Card(cardData, "#card-template").getCards())
+    cards.append(new Card(cardData, "#card-template").generateCard())
   );
 };
 createCards();
 // !!------ Handlers
-function handleFormSubmit(event) {
+function handleProfileFormSubmit(event) {
   event.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = aboutInput.value;
@@ -82,24 +92,24 @@ function handleEditButton() {
 }
 
 // !!---------Adding newCard form
-function handleAddNewCard(event) {
+function handleCardFormSubmit(event) {
   event.preventDefault();
   const addCard = {
     name: titleInput.value,
     link: imageLinkInput.value,
   };
-  const card = new Card(addCard, "#card-template").getCards();
+  const card = new Card(addCard, "#card-template").generateCard();
   cards.prepend(card);
   closePopup(popupAddCard);
 }
 
 function handleAddButton() {
   openPopup(popupAddCard);
-  addForm.resetForms();
-  addFormValidator.resetForms();
+  addForm.reset();
+  addFormValidator.reset();
 }
 // !!------------- eventListeners
 profileEditButton.addEventListener("click", handleEditButton);
 profileAddButton.addEventListener("click", handleAddButton);
-editForm.addEventListener("submit", handleFormSubmit);
-addForm.addEventListener("submit", handleAddNewCard);
+editForm.addEventListener("submit", handleProfileFormSubmit);
+addForm.addEventListener("submit", handleCardFormSubmit);

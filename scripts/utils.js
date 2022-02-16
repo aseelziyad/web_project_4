@@ -1,19 +1,9 @@
-const allThePopups = document.querySelectorAll(".popup");
-const allCloseButtons = document.querySelectorAll(".popup__close");
-
 // !!open popups----------**//
 export const openPopup = (popup) => {
   popup.classList.add("popup_active");
   document.addEventListener("keydown", closePopupKey);
   document.addEventListener("mousedown", closePopupClick);
 };
-
-// !!close popupButtons-----------**//
-allCloseButtons.forEach((button) =>
-  button.addEventListener("click", () => {
-    allThePopups.forEach((popup) => closePopup(popup));
-  })
-);
 
 //!close popup!//
 export const closePopup = (popup) => {

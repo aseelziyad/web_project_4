@@ -1,4 +1,4 @@
-import { openPopup } from "./utils.js";
+import { openPopup } from "./Utils.js";
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -16,7 +16,7 @@ export default class Card {
     return cardTemplate;
   }
 
-  getCards() {
+  generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
 
@@ -38,8 +38,9 @@ export default class Card {
       .querySelector(".photograph__post")
       .addEventListener("click", this._handleCardImage);
   }
-  _handleLikeIcon = (event) => {
-    event.target.classList.toggle("photograph__like-button_active");
+  _handleLikeIcon = () => {
+    this._element.remove();
+    this._element = null;
   };
 
   _handleDeleteIcon = (event) => {
