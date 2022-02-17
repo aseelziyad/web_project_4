@@ -38,14 +38,16 @@ export default class Card {
       .querySelector(".photograph__post")
       .addEventListener("click", this._handleCardImage);
   }
-  _handleLikeIcon = () => {
+
+  _handleDeleteIcon = () => {
     this._element.remove();
     this._element = null;
   };
 
-  _handleDeleteIcon = (event) => {
-    event.target.parentElement.remove();
+  _handleLikeIcon = (event) => {
+    event.target.classList.toggle("photograph__like-button_active");
   };
+
   _handleCardImage = () => {
     const popupImage = document.querySelector(".popup_image");
     const popupImageTitle = popupImage.querySelector(".popup__image-title");
