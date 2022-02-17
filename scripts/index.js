@@ -1,6 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import { openPopup, closePopup } from "./Utils.js";
+import { openPopup, closePopup } from "./utils.js";
 
 const initialCards = [
   {
@@ -88,7 +88,7 @@ function handleEditButton() {
   nameInput.value = profileTitle.textContent;
   aboutInput.value = profileSubtitle.textContent;
   openPopup(popupEditProfile);
-  editFormValidator.reset();
+  editForm.reset();
 }
 
 // !!---------Adding newCard form
@@ -106,7 +106,7 @@ function handleCardFormSubmit(event) {
 function handleAddButton() {
   openPopup(popupAddCard);
   addForm.reset();
-  addFormValidator.reset();
+  addFormValidator.resetForm();
 }
 // !!------------- eventListeners
 profileEditButton.addEventListener("click", handleEditButton);
