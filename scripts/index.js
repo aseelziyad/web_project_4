@@ -88,10 +88,9 @@ function handleEditButton() {
   nameInput.value = profileTitle.textContent;
   aboutInput.value = profileSubtitle.textContent;
   openPopup(popupEditProfile);
-  editForm.reset();
 }
 
-// !!---------Adding newCard form
+// !!---------Adding newCard
 function handleCardFormSubmit(event) {
   event.preventDefault();
   const addCard = {
@@ -106,7 +105,7 @@ function handleCardFormSubmit(event) {
 function handleAddButton() {
   openPopup(popupAddCard);
   addForm.reset();
-  addFormValidator.resetForm();
+  addFormValidator.resetValidation();
 }
 // !!------------- eventListeners
 profileEditButton.addEventListener("click", handleEditButton);
