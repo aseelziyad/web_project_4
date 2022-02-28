@@ -4,7 +4,7 @@ export default class UserInfo {
     this._job = document.querySelector(userInfo);
   }
 
-  // !! --  returns an object with information about the user.
+  //  --  returns an object with information about the user.
   getUserInfo() {
     return {
       name: this._name.textContent,
@@ -12,7 +12,7 @@ export default class UserInfo {
     };
   }
 
-  // !! -----takes new user data and adds it on the page
+  //  -----takes new user data and adds it on the page
   setUserInfo(name, job) {
     this._name.textContent = name;
     this._job.textContent = job;

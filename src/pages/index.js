@@ -1,4 +1,4 @@
-// import "./pages/indec.css";
+import "./index.css";
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -18,11 +18,11 @@ import {
   popupImageClass,
 } from "../utils/constants.js";
 
-//!!-------- define consts
+//-------- create cards
+
 const imagePopup = new PopupWithImage(popupImageClass);
 imagePopup.setEventListeners();
 
-//!!-------- create cards
 function createCard({ data }) {
   const card = new Card(
     {
@@ -49,7 +49,7 @@ const cardList = new Section(
 );
 cardList.renderer();
 
-// !!------ Profile
+// ------ Profile
 const editFormValidator = new FormValidator(settings, editForm);
 editFormValidator.enableValidation();
 
@@ -77,7 +77,7 @@ function handleEditButton() {
   editProfilePopup.open();
 }
 
-// !!---------Add Card
+// ---------Add Card
 
 const addFormValidator = new FormValidator(settings, addForm);
 addFormValidator.enableValidation();
@@ -104,6 +104,6 @@ function handleAddButton() {
   addCardPopup.open();
 }
 
-// !!------------- eventListeners
+// ------------- eventListeners
 profileEditButton.addEventListener("click", handleEditButton);
 profileAddButton.addEventListener("click", handleAddButton);

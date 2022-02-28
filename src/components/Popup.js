@@ -1,6 +1,6 @@
 export default class Popup {
   constructor(popupSelector) {
-    //!! attribute = this => popupselectors(anypop)
+    //attribute = this => popupselectors(anypop)
     this._popup = document.querySelector(popupSelector);
     this._handleEscapeClose = this._handleEscapeClose.bind(this);
     this._handleCloseOnClick = this._handleCloseOnClick.bind(this);
@@ -44,5 +44,3 @@ export default class Popup {
     // document.removeventListener("mousedown", this._handleCloseOnClick);
   }
 }
-//  !!static reference wiothout this no instance
-// instance reference => this referes child/parent

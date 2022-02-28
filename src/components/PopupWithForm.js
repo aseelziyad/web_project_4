@@ -2,8 +2,8 @@ import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
   //note the construter take what can not be common about the abject
-  // !! the passed constructer's parameters tell us the defined popups and how to handle each one
-  //** difference is with handling the form (addcard/ editdata) */ but popups are the same in general
+  //  the passed constructer's parameters tell us the defined popups and how to handle each one
+  //difference is with handling the form (addcard/ editdata) */ but popups are the same in general
   constructor(PopupSelector, handleFormSubmit, validator) {
     super(PopupSelector);
     this._handleFormSubmit = handleFormSubmit;

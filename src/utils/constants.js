@@ -32,6 +32,7 @@ export const editForm = document.querySelector("#form-edit");
 export const profileEditButton = document.querySelector(
   ".profile__edit-button"
 );
+
 export const profileAddButton = document.querySelector(".profile__add-button");
 export const profileTitle = document.querySelector(".profile__title");
 export const profileSubtitle = document.querySelector(".profile__subtitle");
