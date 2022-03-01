@@ -33,7 +33,7 @@ function createCard({ data }) {
     },
     "#card-template"
   );
-  //this._element
+   //this._element
   const cardElement = card.getCardTemplate();
   return cardElement;
 }
@@ -54,8 +54,8 @@ const editFormValidator = new FormValidator(settings, editForm);
 editFormValidator.enableValidation();
 
 const userInfo = new UserInfo({
-  userName: ".profile__title",
-  userInfo: ".profile__subtitle",
+  userNameSelector: ".profile__title",
+  userInfoSelector: ".profile__subtitle",
 });
 
 const editProfilePopup = new PopupWithForm(
@@ -63,10 +63,10 @@ const editProfilePopup = new PopupWithForm(
   handleProfileFormSubmit,
   editFormValidator
 );
+editProfilePopup.setEventListeners();
 
 function handleProfileFormSubmit(data) {
   userInfo.setUserInfo(data.name, data.job);
-  editProfilePopup.setEventListeners();
   editProfilePopup.close();
 }
 

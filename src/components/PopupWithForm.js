@@ -1,16 +1,15 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  //note the construter take what can not be common about the abject
+    //note the construter take what can not be common about the abject
   //  the passed constructer's parameters tell us the defined popups and how to handle each one
   //difference is with handling the form (addcard/ editdata) */ but popups are the same in general
-  constructor(PopupSelector, handleFormSubmit, validator) {
-    super(PopupSelector);
+  constructor(popupSelector, handleFormSubmit, validator) {
+    super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector(".popup__form");
     this._inputList = this._popup.querySelectorAll(".popup__input");
-
-    // we need to reset the validator  whenever we open the popup (in the open mehtod)
+        // we need to reset the validator  whenever we open the popup (in the open mehtod)
     // to do so, we need a validator object (passed by as parameter)
     this._validator = validator;
   }
@@ -31,20 +30,16 @@ export default class PopupWithForm extends Popup {
     super.open();
   }
 
-  close() {
-    super.close();
-  }
-
   reset() {
     this._form.reset();
   }
 
   setEventListeners() {
-    // every popup has submit button
+    super.setEventListeners();
+       // every popup has submit button
     this._popup.addEventListener("submit", (event) => {
       event.preventDefault;
       this._handleFormSubmit(this._getInputValues());
     });
-    super.setEventListeners();
   }
 }
