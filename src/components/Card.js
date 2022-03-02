@@ -6,23 +6,23 @@ export default class Card {
     this._handleImagePopupOpen = handleCardClick;
     this._name = data.name;
     this._link = data.link;
-    this._element = this._setCardTemplate();
-    this._cardImage = this._element.querySelector(".photograph__post");
+    this._element = this._getCardTemplate();
     this._element.querySelector(".photograph__title").textContent = this._name;
+    this._cardImage = this._element.querySelector(".photograph__post");
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
 
     this._setEventListeners();
   }
 
-  _setCardTemplate() {
+  _getCardTemplate() {
     return document
       .querySelector(this._cardSelector)
       .content.querySelector(".photograph")
       .cloneNode(true);
   }
 
-  getCardTemplate() {
+  getCard() {
     return this._element;
   }
 

@@ -33,8 +33,8 @@ function createCard({ data }) {
     },
     "#card-template"
   );
-   //this._element
-  const cardElement = card.getCardTemplate();
+  //this._element
+  const cardElement = card.getCard();
   return cardElement;
 }
 
