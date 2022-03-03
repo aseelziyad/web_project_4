@@ -89,12 +89,7 @@ const addCardPopup = new PopupWithForm(
 );
 addCardPopup.setEventListeners();
 
-function handleCardFormSubmit() {
-  const inputValues = addCardPopup._getInputValues();
-  const data = {
-    name: inputValues.title,
-    link: inputValues.imageLink,
-  };
+function handleCardFormSubmit(data) {
   addCardPopup.close();
   cardList.addItem(createCard({ data }));
   addCardPopup.reset();
