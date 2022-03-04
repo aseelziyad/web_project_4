@@ -37,13 +37,7 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._popup.addEventListener("submit", () => {
-      // move the input values fetching and mapping inside the PopupWithForm
-      const inputValues = this._getInputValues();
-      const data = {
-        name: inputValues.title,
-        link: inputValues.imageLink,
-      };
-      this._handleFormSubmit(data);
+      this._handleFormSubmit(this._getInputValues());
     });
   }
 }
