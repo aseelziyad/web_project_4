@@ -14,14 +14,22 @@
         class="header__logo"
       />
     </header>
-
+src/images/icon-edit.svg
     <main class="content">
       <section class="profile">
+        <div class="profile__avatar-container">
+          <button
+          type="button"
+          aria-label="Edit avatar"
+          class="profile__avatar-button"
+        ></button>
         <img
           src="<%=require('./images/profile-avatar.jpg')%>"
           alt="Jacques Cousteau profile picture"
           class="profile__avatar"
-        />
+        /> -->
+        </div>
+        
         <div class="profile__info">
           <div class="profile__info-container">
             <h1 class="profile__title">Jacques Cousteau</h1>
@@ -69,7 +77,7 @@
           <input
             type="text"
             class="popup__input"
-            name="job"
+            name="about"
             id="input-about"
             placeholder="About me"
             minlength="2"
@@ -84,6 +92,33 @@
       </div>
     </div>
 
+    <div class="popup popup__avatar">
+      <div class="popup__box">
+        <button
+          class="popup__close"
+          aria-label="Close popup"
+          type="button"
+        ></button>
+        <h2 class="popup__title">
+          Change profile picture
+        </h2>
+        <form class="popup__form" name="form-avatar" id="form-avatar" novalidate>
+          <input
+          type="url"
+            class="popup__input"
+            name="avatar"
+            id="input-avatar"
+            placeholder="Image link"
+            required
+          />
+          <span id="input-avatar-error" class="popup__error"></span>
+          <button type="submit" aria-label="Submit" class="popup__submit-btn">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    
     <div class="popup popup_add-card">
       <div class="popup__box">
         <button
@@ -114,7 +149,7 @@
           />
           <span id="input-image-link-error" class="popup__error"></span>
           <button type="submit" aria-label="Creat" class="popup__submit-btn">
-            Create
+            Save
           </button>
         </form>
       </div>
@@ -132,6 +167,20 @@
       </div>
     </div>
 
+    <div class="popup popup_delete">
+      <div class="popup__box">
+        <button
+          type="button"
+          aria-label="Close popup"
+          class="popup__close"
+        ></button>
+        <form class="popup__form popup__form-delete" name="form-delete" id="form-delete" novalidate>
+          <h2 class="popup__delete-title">Are you sure?</h2>
+          <button type="submit" aria-label="Save changes" class="popup__submit-btn">yes</button>
+          </form>
+      </div>
+    </div>
+
     <template id="card-template">
       <article class="photograph">
         <button
@@ -142,23 +191,22 @@
         <img src="#" alt="Card Image" class="photograph__post" />
         <div class="photograph__container">
           <h2 class="photograph__title"></h2>
-          <button
+          <!-- <button
+          type="button"
+          aria-label="Like"
+          class="photograph__like-button"
+        ></button> -->
+          <div class="photograph__container-like">
+            <button
             type="button"
             aria-label="Like"
             class="photograph__like-button"
           ></button>
+          <p class="photograph__like-counter"></p>
+          </div>
         </div>
+        <!-- <p class="photograph__like-counter">1</p> -->
       </article>
     </template>
-    <!-- <script type="module" src="pages/index.js"></script>
-    <script type="module" src="utils/utils.js"></script>
-    <script type="module" src="components/Card.js"></script>
-    <script type="module" src="components/FormValidator.js"></script>
-    <script type="module" src="components/Popup.js"></script>
-    <script type="module" src="components/PopupWithForm.js"></script>
-    <script type="module" src="components/PopupWithImage.js"></script>
-    <script type="module" src="components/Section.js"></script>
-    <script type="module" src="components/UserInfo.js"></script>
-    <script type="module" src="utils/constants.js"></script> -->
   </body>
 </html>
