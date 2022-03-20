@@ -143,7 +143,7 @@ const avatarFormValidator = new FormValidator(settings, avatarForm);
 avatarFormValidator.enableValidation();
 
 const editAvatarPopup = new PopupWithForm(
-  ".popup__avatar",
+  ".popup_avatar",
   handleAvatarFormSubmit,
   avatarFormValidator,
 );

@@ -26,7 +26,7 @@ export const initialCards = [
 ];
 
 export const popupEditProfile = document.querySelector(".popup_edit-profile");
-export const popupAvatar = document.querySelector(".popup__avatar");
+export const popupAvatar = document.querySelector(".popup_avatar");
 export const nameInput = document.querySelector("#input-name");
 export const aboutInput = document.querySelector("#input-about");
 export const editForm = document.querySelector("#form-edit");
