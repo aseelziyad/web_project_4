@@ -4,24 +4,18 @@ export default class Api {
     this._headers = headers;
   }
 
+  
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => {
-        console.log(err);
-      });
+      .then(this._getResponseData);
   }
-
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => {
-        console.log(err);
-      });
+      .then(this._getResponseData);
   }
 
   setUserInfo({ name, about, avatar }) {
@@ -35,10 +29,7 @@ export default class Api {
         avatar,
       }),
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => {
-        console.log(err);
-      });
+      .then(this._getResponseData);
   }
 
   createCard(data) {
@@ -47,10 +38,7 @@ export default class Api {
       method: "POST",
       body: JSON.stringify(data),
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => {
-        console.log(err);
-      });
+      .then(this._getResponseData);
   }
 
    deleteCard(cardId) {
@@ -58,10 +46,7 @@ export default class Api {
       headers: this._headers,
       method: "DELETE",
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => {
-        console.log(err);
-      });
+    .then(this._getResponseData);
    }
   
    likeCard(id) {
@@ -69,10 +54,7 @@ export default class Api {
       headers: this._headers,
       method: "PUT",
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => {
-        console.log(err);
-      });
+    .then(this._getResponseData);
    }
   
   disLikeCard(id) {
@@ -80,10 +62,7 @@ export default class Api {
       headers: this._headers,
       method: "DELETE",
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => {
-        console.log(err);
-      });
+    .then(this._getResponseData);
   }
 
   setUserAvatar(imageLink) {
@@ -93,17 +72,14 @@ export default class Api {
       body: JSON.stringify
         ({ avatar: imageLink }),
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => {
-        console.log(err);
-      });
+    .then(this._getResponseData);
+  }
+
+  _getResponseData(res) {
+    if (!res.ok) {
+        return Promise.reject(`Error: ${res.status}`); 
+    }
+    return res.json();
   }
 }
 
-export const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/group-12",
-  headers: {
-    authorization: "6edae45a-96e2-41b1-a788-2616fd5c518a",
-    "Content-Type": "application/json",
-  },
-});

@@ -5,7 +5,6 @@ export default class Card {
     userId
   ) {
     this._cardSelector = cardSelector;
-    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
@@ -15,23 +14,6 @@ export default class Card {
     this._handleImagePopupOpen = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
     this._handleLikeIcon = handleLikeIcon;
-    this._element = this._getCardTemplate();
-    this._element.querySelector(".photograph__title").textContent = this._name;
-    this._cardImage = this._element.querySelector(".photograph__post");
-    this._deleteCardButton = this._element.querySelector(
-      ".photograph__delete-button"
-    );
-    this._likeCardButton = this._element.querySelector(
-      ".photograph__like-button"
-    );
-    this._likeCounter = this._element.querySelector(
-      ".photograph__like-counter"
-    );
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
-    this._checkId();
-    this._isLiked();
-    this._setEventListeners();
   }
 
   _getCardTemplate() {
@@ -41,11 +23,7 @@ export default class Card {
       .cloneNode(true);
   }
 
-  getCard() {
-    return this._element;
-  }
-  //visibality of delete icon
-  _checkId() {
+  _setDeleteButton() {
     if (this._ownerId !== this._userId) {
       this._deleteCardButton.style.display = "none";
     }
@@ -62,10 +40,10 @@ export default class Card {
 
   updateLike = (newLikes) => {
     this._likes = newLikes;
-    this._isLiked();
+    this._renderLikes();
   };
 
-  _isLiked() {
+  _renderLikes() {
     this._likeCounter.textContent = this._likes.length;
     if (this.checkLikes()) {
       this._likeCardButton.classList.add("photograph__like-button_active");
@@ -84,5 +62,27 @@ export default class Card {
     this._element
       .querySelector(".photograph__post")
       .addEventListener("click", this._handleImagePopupOpen);
+  }
+
+  generateCard() {
+    this._element = this._getCardTemplate();
+    this._element.querySelector(".photograph__title").textContent = this._name;
+    this._cardImage = this._element.querySelector(".photograph__post");
+    this._deleteCardButton = this._element.querySelector(
+      ".photograph__delete-button"
+    );
+    this._likeCardButton = this._element.querySelector(
+      ".photograph__like-button"
+    );
+    this._likeCounter = this._element.querySelector(
+      ".photograph__like-counter"
+    );
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._setDeleteButton();
+    this._renderLikes();
+    this._setEventListeners();
+    
+    return this._element;
   }
 }

@@ -7,7 +7,7 @@ import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import { api } from "../components/Api.js";
+import Api from "../utils/Api.js";
 import {
   settings,
   profileEditButton,
@@ -21,19 +21,27 @@ import {
   popupImageClass,
   popupDelete,
 } from "../utils/constants.js";
-import { data } from "autoprefixer";
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-12",
+  headers: {
+    authorization: "6edae45a-96e2-41b1-a788-2616fd5c518a",
+    "Content-Type": "application/json",
+  },
+});
 
-let userId
+let userId;
+// let newInfo = {};
 
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then(([cardData, userData]) => {
+  .then(([cardsData, userData]) => {
     userId = userData._id;
-    cardList.renderer(cardData);
+    cardList.renderer(cardsData);
     userInfo.setUserInfo({
       name: userData.name,
       about: userData.about,
     })
+    userInfo.setUserAvatar(userData.avatar)
   })
   .catch((err) => {
     console.log(err);
@@ -96,7 +104,7 @@ function createCard({ data }) {
     userId
   );
   //this._element
-  const cardElement = card.getCard();
+  const cardElement = card.generateCard();
   return cardElement;
 }
 
@@ -126,9 +134,20 @@ const editProfilePopup = new PopupWithForm(
 );
 editProfilePopup.setEventListeners();
 
-function handleProfileFormSubmit(data) {
-  userInfo.setUserInfo(data);
-  editProfilePopup.close();
+function handleProfileFormSubmit() {
+  editProfilePopup.showLoading();
+  api
+  .setUserInfo(editProfilePopup._getInputValues())
+  .then((data) => {
+    userInfo.setUserInfo(data);
+    editProfilePopup.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+    .finally(() => {
+      editProfilePopup.hideLoading();
+  })
 }
 
 function handleEditButton() {
@@ -150,6 +169,8 @@ const editAvatarPopup = new PopupWithForm(
 editAvatarPopup.setEventListeners();
 
 function handleAvatarFormSubmit() {
+  editAvatarPopup.showLoading();
+
   const data = editAvatarPopup.getInputValues();
   api
     .setUserAvatar(data.avatar)
@@ -160,6 +181,9 @@ function handleAvatarFormSubmit() {
     .catch((err) => {
       console.log(err);
     })
+    .finally(() => {
+      editAvatarPopup.hideLoading();
+  })
 }
 
 function handleAvatarButton() {
@@ -179,6 +203,8 @@ const addCardPopup = new PopupWithForm(
 addCardPopup.setEventListeners();
 
 function handleCardFormSubmit({ name, link }) {
+  addCardPopup.showLoading();
+  
   const data = {
     name: name,
     link: link,
@@ -186,9 +212,15 @@ function handleCardFormSubmit({ name, link }) {
   api
     .createCard(data)
     .then((data) => {
-    cardList.addItem(createCard({ data }));
-  })
-  addCardPopup.close();
+      cardList.addItem(createCard({ data }));
+      addCardPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+      .finally(() => {
+        addCardPopup.hideLoading();
+    })
 }
 
 function handleAddButton() {

@@ -1,4 +1,5 @@
 import Popup from "./Popup.js";
+
 export default class PopupWithSubmit extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
@@ -6,7 +7,7 @@ export default class PopupWithSubmit extends Popup {
     }
 
     setAction(action) {
-        this._submitHandler = action;
+        this._handleSubmit = action;
     }
 
 
@@ -14,7 +15,7 @@ export default class PopupWithSubmit extends Popup {
             super.setEventListeners();
         this._popup.addEventListener("submit", (evt) => {
             evt.preventDefault();
-              this._submitHandler();
+              this._handleSubmit();
             });
           }
     }
