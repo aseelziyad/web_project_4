@@ -32,7 +32,6 @@ const api = new Api({
 let userId;
 // let newInfo = {};
 
-
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cardsData, userData]) => {
     userId = userData._id;
@@ -40,8 +39,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     userInfo.setUserInfo({
       name: userData.name,
       about: userData.about,
-    })
-    userInfo.setUserAvatar(userData.avatar)
+    });
+    userInfo.setUserAvatar(userData.avatar);
   })
   .catch((err) => {
     console.log(err);
@@ -65,39 +64,39 @@ function createCard({ data }) {
         const isLiked = card.checkLikes();
         if (isLiked) {
           api
-          .disLikeCard(id)
-            .then(res => {
-              card.updateLike(res.likes)
+            .disLikeCard(id)
+            .then((res) => {
+              card.updateLike(res.likes);
             })
             .catch((err) => {
               console.log(err);
-            })
-          } else {
+            });
+        } else {
           api
-          .likeCard(id)
-          .then((res) => {
-            card.updateLike(res.likes);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+            .likeCard(id)
+            .then((res) => {
+              card.updateLike(res.likes);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       },
 
       handleDeleteCard: (id) => {
-          deleteCardPopup.open();
-      
+        deleteCardPopup.open();
+
         deleteCardPopup.setAction(() => {
           api
             .deleteCard(id)
-          .then(res => {
-            card.deleteCard();
-            deleteCardPopup.close();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        })
+            .then((res) => {
+              card.deleteCard();
+              deleteCardPopup.close();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
       },
     },
     "#card-template",
@@ -134,20 +133,20 @@ const editProfilePopup = new PopupWithForm(
 );
 editProfilePopup.setEventListeners();
 
-function handleProfileFormSubmit() {
+function handleProfileFormSubmit(data) {
   editProfilePopup.showLoading();
   api
-  .setUserInfo(editProfilePopup._getInputValues())
-  .then((data) => {
-    userInfo.setUserInfo(data);
-    editProfilePopup.close();
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+    .setUserInfo(data)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      editProfilePopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       editProfilePopup.hideLoading();
-  })
+    });
 }
 
 function handleEditButton() {
@@ -164,14 +163,13 @@ avatarFormValidator.enableValidation();
 const editAvatarPopup = new PopupWithForm(
   ".popup_avatar",
   handleAvatarFormSubmit,
-  avatarFormValidator,
+  avatarFormValidator
 );
 editAvatarPopup.setEventListeners();
 
-function handleAvatarFormSubmit() {
+function handleAvatarFormSubmit(data) {
   editAvatarPopup.showLoading();
 
-  const data = editAvatarPopup.getInputValues();
   api
     .setUserAvatar(data.avatar)
     .then((res) => {
@@ -183,7 +181,7 @@ function handleAvatarFormSubmit() {
     })
     .finally(() => {
       editAvatarPopup.hideLoading();
-  })
+    });
 }
 
 function handleAvatarButton() {
@@ -198,13 +196,13 @@ addFormValidator.enableValidation();
 const addCardPopup = new PopupWithForm(
   ".popup_add-card",
   handleCardFormSubmit,
-  addFormValidator,
+  addFormValidator
 );
 addCardPopup.setEventListeners();
 
 function handleCardFormSubmit({ name, link }) {
   addCardPopup.showLoading();
-  
+
   const data = {
     name: name,
     link: link,
@@ -218,9 +216,9 @@ function handleCardFormSubmit({ name, link }) {
     .catch((err) => {
       console.log(err);
     })
-      .finally(() => {
-        addCardPopup.hideLoading();
-    })
+    .finally(() => {
+      addCardPopup.hideLoading();
+    });
 }
 
 function handleAddButton() {

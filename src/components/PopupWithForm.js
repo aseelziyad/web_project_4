@@ -12,7 +12,7 @@ export default class PopupWithForm extends Popup {
     this._validator = validator;
   }
 
-  getInputValues() {
+  _getInputValues() {
     const formValues = {};
     this._inputList.forEach((input) => {
       formValues[input.name] = input.value;
@@ -43,7 +43,7 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._popup.addEventListener("submit", () => {
-      this._handleFormSubmit(this.getInputValues());
+      this._handleFormSubmit(this._getInputValues());
     });
   }
 }
